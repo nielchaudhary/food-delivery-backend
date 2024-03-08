@@ -27,6 +27,10 @@ const restaurantSchema = new Schema({
         type : String,
         default : '',
     },
+    status : {
+        type: String,
+        required : true,
+    }
 
 });
 
