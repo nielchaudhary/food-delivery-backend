@@ -1,8 +1,13 @@
 const Restaurant = require('../../model/restaurant.model');
+const {validationResult} = require("express-validator");
 
 const updateStatus = async (req, res) => {
     const restaurantId = req.params.restaurantId;
     const { status } = req.body;
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
 
     try {
         const existingRestaurant = await Restaurant.findById(restaurantId);

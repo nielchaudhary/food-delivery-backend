@@ -1,7 +1,13 @@
 const restaurantInfo = require('../../model/restaurant.model')
+const {validationResult} = require("express-validator");
 
 const addRestaurant = async (req, res) => {
     const {name, location, menu, contact, status} = req.body
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
 
 
     try {

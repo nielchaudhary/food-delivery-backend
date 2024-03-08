@@ -1,9 +1,14 @@
 const restaurant = require('../../model/restaurant.model')
+const {validationResult} = require("express-validator");
 
 const updateMenu = async (req, res) => {
 
     const {newItem} = req.body
     const restaurantId = req.params.restaurantId;
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
 
     try{
 
