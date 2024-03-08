@@ -20,11 +20,13 @@ const updateStatusValidate = require('../validation/restaurantvalidation/updates
 
 const updateMenuValidate = require('../validation/restaurantvalidation/updatemenu.validate')
 
+const updatePricingValidate = require('../validation/restaurantvalidation/updatepricing.validate')
+
 
 router.post('/addRestaurant',addRestaurantValidate, addRestaurant)
 router.put('/updateRestaurantStatus/:restaurantId',updateStatusValidate,updateRestaurantStatus)
 router.put('/updateRestaurantMenu/:restaurantId',updateMenuValidate,updateRestaurantMenu)
-router.put('/updatePricing/:id', updatePricing)
+router.put('/updatePricing/:id',updatePricingValidate, updatePricing)
 
 
 
