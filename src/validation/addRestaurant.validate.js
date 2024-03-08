@@ -1,12 +1,24 @@
 const { body } = require('express-validator');
 
 const addRestaurantvalidate = [
-    body('name').notEmpty().isString().withMessage("name is required"),
-    body('location').notEmpty().isString().withMessage("location is required"),
-    body('rating').notEmpty().isString().withMessage("rating in string is required"),
-    body('contact').notEmpty().isString().withMessage("Contact in string format is required"),
-    body('status').notEmpty().isString().withMessage("Restaurant Status in string is required"),
-    body('menu').notEmpty().isObject().withMessage("Menu in Object format is required"),
+    body('name')
+        .notEmpty().withMessage("name is required")
+        .isString().withMessage("name must be a string"),
+    body('location')
+        .notEmpty().withMessage("location is required")
+        .isString().withMessage("location must be a string"),
+    body('rating')
+        .notEmpty().withMessage("rating is required")
+        .isString().withMessage("rating must be a string"),
+    body('contact')
+        .notEmpty().withMessage("contact is required")
+        .isString().withMessage("contact must be a string"),
+    body('status')
+        .notEmpty().withMessage("status is required")
+        .isString().withMessage("status must be a string"),
+    body('menu')
+        .notEmpty().withMessage("menu is required")
+        .isObject().withMessage("menu must be an object"),
 ];
 
 module.exports = addRestaurantvalidate;
