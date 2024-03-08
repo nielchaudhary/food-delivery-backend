@@ -29,13 +29,17 @@ const restaurantSchema = new Schema({
         type: String,
         required: true
     },
-    rating: {
-        type: String,
-        default: ''
-    },
+
     status: {
         type: String,
         required: true
+    },
+    rating : {
+        type : [Number]
+
+    },
+    averageRating : {
+        type : Number,
     }
 });
 
