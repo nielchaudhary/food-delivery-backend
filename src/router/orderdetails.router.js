@@ -1,16 +1,13 @@
 const router = require('express').Router()
 
 //controller imports
-
 const createOrderController = require('../controller/ordercontroller/createorder.controller')
-
-//middleware imports
-
 
 
 //validation imports
+const createNewOrderValidate = require('../validation/ordervalidation/createNewOrder.validate')
 
-router.post('/createNewOrder', createOrderController)
+router.post('/createNewOrder',createNewOrderValidate, createOrderController)
 
 
 
