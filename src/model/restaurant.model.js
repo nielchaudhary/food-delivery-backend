@@ -40,6 +40,10 @@ const restaurantSchema = new Schema({
     },
     averageRating : {
         type : Number,
+    },
+    pendingOrders : {
+        type : [mongoose.Schema.Types.ObjectId],
+        ref : 'Order'
     }
 });
 
