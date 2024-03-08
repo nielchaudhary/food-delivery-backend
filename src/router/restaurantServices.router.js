@@ -7,6 +7,8 @@ const updateRestaurantStatus = require('../controller/restaurantController/updat
 
 const updateRestaurantMenu = require('../controller/restaurantController/updateMenu.controller')
 
+const updatePricing = require('../controller/restaurantController/updatePricing.controller')
+
 
 //middleware imports
 
@@ -22,6 +24,7 @@ const updateMenuValidate = require('../validation/restaurantvalidation/updatemen
 router.post('/addRestaurant',addRestaurantValidate, addRestaurant)
 router.put('/updateRestaurantStatus/:restaurantId',updateStatusValidate,updateRestaurantStatus)
 router.put('/updateRestaurantMenu/:restaurantId',updateMenuValidate,updateRestaurantMenu)
+router.put('/updatePricing/:id', updatePricing)
 
 
 
