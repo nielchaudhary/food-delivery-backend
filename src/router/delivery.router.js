@@ -12,12 +12,12 @@ const updateRestaurantStatus = require('../controller/restaurantController/updat
 
 //validation imports
 const addRestaurantValidate = require('../validation/addRestaurant.validate')
-
+const updateStatusValidate = require('../validation/updatestatus.validate')
 
 
 
 router.post('/addRestaurant',addRestaurantValidate, addRestaurant)
-router.put('/updateRestaurantStatus/:restaurantId',updateRestaurantStatus)
+router.put('/updateRestaurantStatus/:restaurantId',updateStatusValidate,updateRestaurantStatus)
 
 
 
