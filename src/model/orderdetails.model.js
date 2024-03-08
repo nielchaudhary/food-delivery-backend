@@ -14,7 +14,6 @@ const orderSchema = new mongoose.Schema({
     }],
     totalAmount: {
         type: Number,
-        required: true
     },
     status: {
         type: String,
@@ -33,7 +32,10 @@ const orderSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    deliveryAddress: String,
+    deliveryAddress : {
+        type: String,
+        required : true,
+    },
     paymentStatus: {
         type: String,
         enum: ['pending', 'paid'],
