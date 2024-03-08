@@ -10,12 +10,12 @@ const addRestaurant = require('../controller/restaurantController/addRestaurant.
 
 
 //validation imports
+const addRestaurantValidate = require('../validation/addRestaurant.validate')
 
 
 
 
-
-router.post('/addRestaurant', addRestaurant)
+router.post('/addRestaurant',addRestaurantValidate, addRestaurant)
 
 
 
