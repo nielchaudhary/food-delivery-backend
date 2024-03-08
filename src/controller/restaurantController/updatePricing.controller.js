@@ -1,8 +1,14 @@
 const Restaurant = require('../../model/restaurant.model');
+const {validationResult} = require("express-validator");
 
 const updatePricing = async (req, res) => {
     const id = req.params.id;
     const { itemName, newPrice } = req.body;
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
 
     try {
         // Find the restaurant by ID
