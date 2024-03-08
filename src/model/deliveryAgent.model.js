@@ -10,11 +10,11 @@ const deliveryAgentSchema = new Schema({
     },
     availability : {
         type: String,
-        required: true
+        default : 'UnOccupied',
     },
 
 });
 
-const deliveryAgentInfo = mongoose.model('deliveryAgentInfo', deliveryAgentSchema);
+const deliveryAgent = mongoose.model('deliveryAgent', deliveryAgentSchema);
 
-module.exports = deliveryAgentInfo;
+module.exports = deliveryAgent;
