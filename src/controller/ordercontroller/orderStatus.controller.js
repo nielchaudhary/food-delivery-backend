@@ -33,12 +33,15 @@ const orderStatus = async (req, res) => {
             }
 
 
+
             // Assign the delivery agent to the order
             existingOrder.deliveryAgentId = unoccupiedDeliveryAgent._id;
             await existingOrder.save();
 
             // Update the delivery agent status to 'Occupied'
             unoccupiedDeliveryAgent.availability = 'Occupied';
+            unoccupiedDeliveryAgent.orderStatus = "accepted";
+
             await unoccupiedDeliveryAgent.save();
 
         }
