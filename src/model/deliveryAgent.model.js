@@ -10,8 +10,13 @@ const deliveryAgentSchema = new Schema({
     },
     availability : {
         type: String,
-        default : 'UnOccupied',
+        default : 'unoccupied',
     },
+    orderStatus: {
+        type: String,
+        enum: ['accepted', 'departed', 'delivered'],
+    },
+
 
 });
 
