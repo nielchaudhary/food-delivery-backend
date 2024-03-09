@@ -1,7 +1,9 @@
 const Order = require('../../model/orderdetails.model');
+const deliveryAgent = require('../../model/deliveryAgent.model')
+
 const {validationResult} = require("express-validator");
 
-const acceptOrder = async (req, res) => {
+const orderStatus = async (req, res) => {
     const orderId = req.params.orderId;
     const orderDecision = req.body.status;
 
@@ -22,6 +24,29 @@ const acceptOrder = async (req, res) => {
         // Update the status of the order
         existingOrder.status = orderDecision;
 
+
+        if(orderDecision == "accepted"){
+            const unoccupiedDeliveryAgent = await deliveryAgent.findOne({ availability: 'UnOccupied' });
+
+            if (!unoccupiedDeliveryAgent) {
+                return res.status(404).send("No available delivery agent");
+            }
+
+
+            // Assign the delivery agent to the order
+            existingOrder.deliveryAgentId = unoccupiedDeliveryAgent._id;
+            await existingOrder.save();
+
+            // Update the delivery agent status to 'Occupied'
+            unoccupiedDeliveryAgent.availability = 'Occupied';
+            await unoccupiedDeliveryAgent.save();
+
+        }
+
+
+
+
+
         // Save the updated order
         await existingOrder.save();
 
@@ -32,4 +57,4 @@ const acceptOrder = async (req, res) => {
     }
 };
 
-module.exports = acceptOrder;
+module.exports = orderStatus;
