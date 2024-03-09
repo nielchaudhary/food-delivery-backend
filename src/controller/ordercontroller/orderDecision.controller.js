@@ -26,7 +26,7 @@ const orderStatus = async (req, res) => {
 
 
         if(orderDecision == "accepted"){
-            const unoccupiedDeliveryAgent = await deliveryAgent.findOne({ availability: 'UnOccupied' });
+            const unoccupiedDeliveryAgent = await deliveryAgent.findOne({ availability: 'unoccupied' });
 
             if (!unoccupiedDeliveryAgent) {
                 return res.status(404).send("No available delivery agent");
