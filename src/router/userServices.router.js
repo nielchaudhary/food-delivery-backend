@@ -11,11 +11,13 @@ const addRating = require('../controller/userController/addRating.controller')
 
 //validation imports
 
+const addRatingvalidate = require('../validation/uservalidation/addrating.validate')
+
 
 
 
 router.get('/fetchRestaurants', fetchAllRestaurants)
-router.post('/addRating/:restaurantId', addRating)
+router.post('/addRating/:restaurantId',addRatingvalidate, addRating)
 
 
 
