@@ -1,6 +1,7 @@
 const Restaurant = require('../../model/restaurant.model');
 
 const fetchRestaurants = async (req, res) => {
+
     try {
         // Find all restaurants with status "online"
         const restaurants = await Restaurant.find({ status: "online" });
