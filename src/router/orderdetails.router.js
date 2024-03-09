@@ -6,6 +6,7 @@ const createOrderController = require('../controller/ordercontroller/createorder
 const orderDecisionController = require('../controller/ordercontroller/orderDecision.controller')
 
 const orderdepartedController = require('../controller/ordercontroller/orderdeparted.controller')
+const orderDeliveredController = require('../controller/ordercontroller/orderdelivered.controller')
 
 
 //validation imports
@@ -16,6 +17,7 @@ const orderdepartedvalidate = require('../validation/ordervalidation/orderdepart
 router.post('/createNewOrder',createNewOrderValidate, createOrderController)
 router.put('/orderDecision/:orderId', orderstatusvalidate, orderDecisionController)
 router.post('/orderdeparted/:orderId', orderdepartedvalidate,orderdepartedController)
+router.post('/orderdelivered/:orderId', orderDeliveredController)
 
 
 
