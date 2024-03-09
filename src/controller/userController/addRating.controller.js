@@ -1,8 +1,15 @@
 const restaurant = require('../../model/restaurant.model');
+const { validationResult } = require('express-validator');
 
 const addRating = async (req, res) => {
     const restaurantId = req.params.restaurantId;
     const { rating } = req.body;
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
 
     try {
         const existingRestaurant = await restaurant.findById(restaurantId);
