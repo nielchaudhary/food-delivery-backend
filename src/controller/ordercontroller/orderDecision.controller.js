@@ -5,7 +5,7 @@ const {validationResult} = require("express-validator");
 
 const orderStatus = async (req, res) => {
     const orderId = req.params.orderId;
-    const orderDecision = req.body.status;
+    const orderDecision = req.body.decision;
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

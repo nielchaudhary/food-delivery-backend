@@ -7,9 +7,7 @@ const addRestaurantvalidate = [
     body('location')
         .notEmpty().withMessage("location is required")
         .isString().withMessage("location must be a string"),
-    body('rating')
-        .notEmpty().withMessage("rating is required")
-        .isString().withMessage("rating must be a string"),
+
     body('contact')
         .notEmpty().withMessage("contact is required")
         .isString().withMessage("contact must be a string"),
@@ -18,7 +16,7 @@ const addRestaurantvalidate = [
         .isString().withMessage("status must be a string"),
     body('menu')
         .notEmpty().withMessage("menu is required")
-        .isObject().withMessage("menu must be an object"),
+        .isArray().withMessage("menu must be an array"),
 ];
 
 module.exports = addRestaurantvalidate;
